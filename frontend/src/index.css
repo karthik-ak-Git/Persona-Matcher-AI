@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Anuschka Leather Brand Design System
+Colors: Soft Cream #FAF9F6, Deep Teal #008080, Gold #D4AF37
+Fonts: Cormorant Garamond (headings), Lato (body)
+*/
+
+@layer base {
+  :root {
+    /* Brand Colors */
+    --background: 36 67% 97%; /* #FAF9F6 soft cream */
+    --foreground: 180 100% 25%; /* #008080 deep teal for text */
+
+    --card: 36 67% 97%;
+    --card-foreground: 180 100% 25%;
+
+    --popover: 36 67% 97%;
+    --popover-foreground: 180 100% 25%;
+
+    /* Deep Teal Primary */
+    --primary: 180 100% 25%; /* #008080 */
+    --primary-foreground: 36 67% 97%;
+
+    /* Gold Secondary */
+    --secondary: 43 77% 52%; /* #D4AF37 gold */
+    --secondary-foreground: 180 100% 25%;
+
+    /* Muted cream tones */
+    --muted: 40 20% 92%;
+    --muted-foreground: 180 20% 40%;
+
+    /* Gold accent */
+    --accent: 43 77% 52%; /* #D4AF37 */
+    --accent-foreground: 180 100% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 36 67% 97%;
+
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 43 77% 52%; /* Gold ring */
+
+    --radius: 1rem; /* More rounded for luxury feel */
+
+    /* Custom brand tokens */
+    --gold: 43 77% 52%; /* #D4AF37 */
+    --teal: 180 100% 25%; /* #008080 */
+    --cream: 36 67% 97%; /* #FAF9F6 */
+    
+    /* Gradients */
+    --gradient-gold: linear-gradient(135deg, hsl(var(--gold)), hsl(43 60% 60%));
+    --gradient-teal: linear-gradient(135deg, hsl(var(--teal)), hsl(180 80% 35%));
+    --gradient-shimmer: linear-gradient(45deg, transparent 30%, hsl(var(--gold) / 0.3) 50%, transparent 70%);
+    
+    /* Shadows */
+    --shadow-luxury: 0 20px 40px -10px hsl(var(--teal) / 0.1);
+    --shadow-gold: 0 8px 25px -5px hsl(var(--gold) / 0.2);
+    --shadow-soft: 0 10px 25px -5px hsl(180 10% 60% / 0.1);
+    
+    /* Animations */
+    --transition-luxury: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s ease-out;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Luxury Button Components */
+  .btn-gold {
+    @apply bg-gradient-to-r from-[hsl(var(--gold))] to-[hsl(43_60%_60%)] text-foreground px-6 py-3 rounded-full font-medium shadow-[var(--shadow-gold)] transition-[var(--transition-luxury)] hover:shadow-lg hover:scale-105 relative overflow-hidden;
+  }
+  
+  .btn-gold::before {
+    @apply content-[''] absolute inset-0 bg-[var(--gradient-shimmer)] translate-x-[-100%] transition-transform duration-700;
+  }
+  
+  .btn-gold:hover::before {
+    @apply translate-x-[100%];
+  }
+  
+  .btn-teal {
+    @apply bg-gradient-to-r from-[hsl(var(--teal))] to-[hsl(180_80%_35%)] text-primary-foreground px-6 py-3 rounded-full font-medium shadow-[var(--shadow-soft)] transition-[var(--transition-luxury)] hover:shadow-lg hover:scale-105;
+  }
+  
+  /* Luxury Card Components */
+  .card-luxury {
+    @apply bg-card rounded-2xl shadow-[var(--shadow-luxury)] border border-border/50 transition-[var(--transition-luxury)] hover:shadow-xl;
+  }
+  
+  .card-gold {
+    @apply card-luxury border-[hsl(var(--gold)/0.3)] hover:border-[hsl(var(--gold)/0.6)];
+  }
+  
+  /* Custom Scrollbar */
+  .scrollbar-luxury {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--gold)) hsl(var(--muted));
+  }
+  
+  .scrollbar-luxury::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .scrollbar-luxury::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+  
+  .scrollbar-luxury::-webkit-scrollbar-thumb {
+    @apply bg-gradient-to-b from-[hsl(var(--gold))] to-[hsl(43_60%_60%)] rounded-full;
+  }
+  
+  .scrollbar-luxury::-webkit-scrollbar-thumb:hover {
+    @apply from-[hsl(var(--gold))] to-[hsl(43_70%_50%)];
+  }
+  
+  /* Watercolor Background */
+  .watercolor-bg {
+    background: 
+      radial-gradient(circle at 20% 30%, hsl(var(--gold) / 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, hsl(var(--teal) / 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, hsl(var(--gold) / 0.04) 0%, transparent 50%);
+  }
+  
+  /* Animation Classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
